@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 255 255 255;
+    --foreground: 39 39 42;
+    --accent: 124 58 237;
+  }
+
+  .dark {
+    --background: 24 24 27;
+    --foreground: 255 255 255;
+    --accent: 139 92 246;
+  }
+
+  ::selection {
+    @apply bg-purple-500/30 text-white;
+  }
+
+  body {
+    @apply bg-zinc-900 text-zinc-100 antialiased;
+    background-image: 
+      radial-gradient(at 100% 0%, rgb(var(--accent) / 0.15) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, rgb(var(--accent) / 0.1) 0px, transparent 50%);
+    background-attachment: fixed;
+  }
+
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-zinc-700 rounded-full hover:bg-zinc-600 transition-colors;
+  }
+}
+
+@layer components {
+  .social-link {
+    @apply text-zinc-400 hover:text-white transition-all duration-300
+    hover:scale-110 transform p-2 rounded-full hover:bg-zinc-800/50
+    hover:shadow-lg hover:shadow-purple-500/10 backdrop-blur-sm;
+  }
+
+  .project-link {
+    @apply flex items-center gap-2 text-sm text-zinc-400 hover:text-white
+    transition-all duration-300 bg-zinc-900/50 backdrop-blur-sm px-4 py-2 rounded-full
+    hover:bg-zinc-800 hover:shadow-lg hover:shadow-purple-500/10;
+  }
+
+  .tech-tag {
+    @apply px-3 py-1 bg-zinc-900/50 backdrop-blur-sm rounded-full text-sm text-zinc-400
+    transform hover:scale-105 hover:bg-zinc-800 transition-all duration-300
+    hover:shadow-lg hover:shadow-purple-500/10 cursor-default;
+  }
+
+  .skill-tag {
+    @apply px-2 py-1 text-xs bg-zinc-900/50 backdrop-blur-sm text-zinc-400 rounded-md
+    transform hover:scale-105 transition-all duration-300
+    hover:shadow-lg hover:shadow-purple-500/10 cursor-default;
+  }
+}
+
+@layer utilities {
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient 15s ease infinite;
+  }
+
+  @keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .text-glow {
+    text-shadow: 0 0 15px rgb(var(--accent) / 0.5);
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+  }
+}
